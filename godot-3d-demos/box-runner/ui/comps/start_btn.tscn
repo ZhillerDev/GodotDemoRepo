@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciwiojs8gr5ac"]
+
+[ext_resource type="FontFile" uid="uid://00sy3jayucau" path="res://assets/Tencent-Medium.ttf" id="1_4rx4q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qxudi"]
+
+[node name="Start" type="Button"]
+custom_minimum_size = Vector2(0, 80)
+theme_override_colors/font_disabled_color = Color(0.509286, 0.509286, 0.509286, 1)
+theme_override_colors/font_hover_color = Color(0.927516, 0.687984, 0.509451, 1)
+theme_override_colors/font_pressed_color = Color(0.679918, 0.424643, 0.219423, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_4rx4q")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qxudi")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Start "
+flat = true
+alignment = 0

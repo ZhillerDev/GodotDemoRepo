@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://buqlgf1pflry5"]
+
+[ext_resource type="PackedScene" uid="uid://bq541cd2jp00p" path="res://scene/game_manager.tscn" id="1_04hxq"]
+[ext_resource type="PackedScene" uid="uid://ck005of6xvyyw" path="res://prefab/floor.tscn" id="1_cj21r"]
+[ext_resource type="PackedScene" uid="uid://ym7hn4ugv1ud" path="res://prefab/player.tscn" id="2_fgvxn"]
+[ext_resource type="PackedScene" uid="uid://dqbe4edkv8cbp" path="res://ui/player_hud.tscn" id="2_wg7wp"]
+[ext_resource type="PackedScene" uid="uid://bxn0nuddo10gh" path="res://prefab/finishi_line.tscn" id="3_ygv51"]
+
+[node name="Level2" type="Node"]
+
+[node name="Floor" parent="." instance=ExtResource("1_cj21r")]
+
+[node name="Player" parent="." node_paths=PackedStringArray("sync_position_node") groups=["player"] instance=ExtResource("2_fgvxn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.192, -90.4442)
+sync_position_node = NodePath("../Camera3D")
+
+[node name="FinishLine" parent="." instance=ExtResource("3_ygv51")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0064621, 2.79934, 93.7129)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 1.85687e-08, -1.43288e-07, -2.75746e-08, 0.948953, 0.315417, 1.4183e-07, 0.315417, -0.948953, 0, 5.47281, -99.7892)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="GameManager" parent="." instance=ExtResource("1_04hxq")]
+
+[node name="PlayerHUD" parent="." instance=ExtResource("2_wg7wp")]

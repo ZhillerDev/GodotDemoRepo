@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://cttl8kbmdgib0"]
+
+[ext_resource type="FontFile" uid="uid://00sy3jayucau" path="res://assets/Tencent-Medium.ttf" id="1_ntqcf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ca45i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mhrla"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kstwo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ft8p0"]
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(100, 100)
+theme_override_fonts/font = ExtResource("1_ntqcf")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ca45i")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_mhrla")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_kstwo")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ft8p0")
+text = "1"

@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://cvbcjq058li1"]
+
+[ext_resource type="AudioStream" uid="uid://l8l17q5uyqwx" path="res://assets/Sounds/Thump.mp3" id="1_5njg0"]
+[ext_resource type="Script" path="res://script/obstacle.gd" id="1_6j68b"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qjrmh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ekals"]
+albedo_color = Color(0.147672, 0.147672, 0.147672, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_41co0"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1onbm"]
+lifetime_randomness = 0.55
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = 1.07288e-05
+angle_max = 360.0
+direction = Vector3(1, 1, 1)
+initial_velocity_min = 1.0
+initial_velocity_max = 3.0
+linear_accel_min = 0.999998
+linear_accel_max = 0.999998
+color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mhcyv"]
+albedo_color = Color(0.140447, 0.140447, 0.140447, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5yh2l"]
+material = SubResource("StandardMaterial3D_mhcyv")
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="Obstacle" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 5
+mass = 2000.0
+script = ExtResource("1_6j68b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_qjrmh")
+surface_material_override/0 = SubResource("StandardMaterial3D_ekals")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_41co0")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.153321, -0.287004, -0.597333)
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.35
+randomness = 0.4
+visibility_aabb = AABB(-1, -0.07, -0.05, 2.3, 0.15, 0.1)
+process_material = SubResource("ParticleProcessMaterial_1onbm")
+draw_pass_1 = SubResource("BoxMesh_5yh2l")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("1_5njg0")

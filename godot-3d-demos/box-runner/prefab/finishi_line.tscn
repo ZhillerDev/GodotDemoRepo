@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxn0nuddo10gh"]
+
+[ext_resource type="Script" path="res://script/finishi_line.gd" id="1_pwn4s"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_nw0va"]
+size = Vector3(0.5, 2, 0.5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3jmnp"]
+size = Vector2(8, 4)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y76k7"]
+transparency = 1
+albedo_color = Color(0.317647, 0.317647, 0.317647, 0.482353)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8x4di"]
+size = Vector3(8, 4, 0.5)
+
+[node name="FinishLine" type="Node3D"]
+script = ExtResource("1_pwn4s")
+
+[node name="StickLeft" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 2, 0, 0, 0, 0.4, -4, 0, 0)
+mesh = SubResource("BoxMesh_nw0va")
+skeleton = NodePath("../StickRight")
+
+[node name="StickRight" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 2, 0, 0, 0, 0.4, 4, 0, 0)
+mesh = SubResource("BoxMesh_nw0va")
+
+[node name="Barrior" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_3jmnp")
+surface_material_override/0 = SubResource("StandardMaterial3D_y76k7")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_8x4di")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

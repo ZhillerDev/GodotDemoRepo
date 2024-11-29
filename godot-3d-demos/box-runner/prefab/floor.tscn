@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck005of6xvyyw"]
+
+[ext_resource type="Script" path="res://script/floor.gd" id="1_s3nj5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_if0kc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lqiew"]
+size = Vector3(10, 1, 200)
+
+[node name="Floor" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 3
+freeze = true
+script = ExtResource("1_s3nj5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 200, 0, 0, 0)
+mesh = SubResource("BoxMesh_if0kc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_lqiew")

@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8mpo7pobyct0"]
+
+[ext_resource type="PackedScene" uid="uid://bq541cd2jp00p" path="res://scene/game_manager.tscn" id="1_e2grh"]
+[ext_resource type="PackedScene" uid="uid://dqbe4edkv8cbp" path="res://ui/player_hud.tscn" id="2_u2spy"]
+[ext_resource type="PackedScene" uid="uid://ck005of6xvyyw" path="res://prefab/floor.tscn" id="3_f5jaq"]
+[ext_resource type="PackedScene" uid="uid://cvbcjq058li1" path="res://prefab/obstacle.tscn" id="3_rblpi"]
+[ext_resource type="PackedScene" uid="uid://ym7hn4ugv1ud" path="res://prefab/player.tscn" id="4_shn5g"]
+[ext_resource type="PackedScene" uid="uid://bxn0nuddo10gh" path="res://prefab/finishi_line.tscn" id="5_ht1qx"]
+
+[node name="Level1" type="Node"]
+
+[node name="Floor" parent="." instance=ExtResource("3_f5jaq")]
+
+[node name="Player" parent="." node_paths=PackedStringArray("sync_position_node") groups=["player"] instance=ExtResource("4_shn5g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22079, -89.8247)
+sync_position_node = NodePath("../Camera3D")
+
+[node name="Obs" type="Node" parent="."]
+
+[node name="Obstacle" parent="Obs" instance=ExtResource("3_rblpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.09021, -51.4755)
+
+[node name="Obstacle2" parent="Obs" instance=ExtResource("3_rblpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.83758, 6.09021, -44.9363)
+
+[node name="Obstacle3" parent="Obs" instance=ExtResource("3_rblpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.31602, 6.09021, -27.7182)
+
+[node name="Obstacle4" parent="Obs" instance=ExtResource("3_rblpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0592508, 6.09021, -11.2623)
+
+[node name="Obstacle5" parent="Obs" instance=ExtResource("3_rblpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18743, 6.09021, -2.98867)
+
+[node name="Obstacle6" parent="Obs" instance=ExtResource("3_rblpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27174, 6.09021, 14.4547)
+
+[node name="Obstacle7" parent="Obs" instance=ExtResource("3_rblpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0837541, 6.5128, 20.1723)
+
+[node name="FinishLine" parent="." instance=ExtResource("5_ht1qx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.70389, 94.6073)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, -2.75746e-08, 0.948953, 0.315417, 8.29601e-08, 0.315417, -0.948953, 0, 3.92046, -98.22)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="PlayerHUD" parent="." instance=ExtResource("2_u2spy")]
+
+[node name="GameManager" parent="." instance=ExtResource("1_e2grh")]

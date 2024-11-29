@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://ym7hn4ugv1ud"]
+
+[ext_resource type="Script" path="res://script/player.gd" id="1_70iqb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ew6ti"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gx3t4"]
+albedo_color = Color(0.960784, 0.2, 0.321569, 1)
+emission = Color(0.489622, 0.489622, 0.489622, 1)
+emission_energy_multiplier = 0.0
+refraction_scale = -0.35
+grow = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3v1ru"]
+
+[node name="Player" type="RigidBody3D"]
+collision_mask = 14
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_70iqb")
+speed = 100
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ew6ti")
+surface_material_override/0 = SubResource("StandardMaterial3D_gx3t4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_3v1ru")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmlbvrplaid8j"]
+
+[ext_resource type="FontFile" uid="uid://00sy3jayucau" path="res://assets/Tencent-Medium.ttf" id="1_1gsbc"]
+[ext_resource type="Script" path="res://script/level_select.gd" id="1_4rrit"]
+[ext_resource type="PackedScene" uid="uid://ciwiojs8gr5ac" path="res://ui/comps/start_btn.tscn" id="2_mrbvl"]
+[ext_resource type="PackedScene" uid="uid://wxg7486ikcu4" path="res://ui/comps/spacer.tscn" id="3_nlnk5"]
+[ext_resource type="PackedScene" uid="uid://cttl8kbmdgib0" path="res://ui/comps/level_btn.tscn" id="4_g68ua"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gq4i2"]
+bg_color = Color(0.156863, 0.156863, 0.156863, 1)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_4rrit")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gq4i2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+pivot_offset = Vector2(576, 324)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1gsbc")
+theme_override_font_sizes/font_size = 48
+text = "Choose your levels"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" parent="Panel/VBoxContainer/HBoxContainer" instance=ExtResource("2_mrbvl")]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Back"
+
+[node name="Spacer" parent="Panel/VBoxContainer" instance=ExtResource("3_nlnk5")]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BtnContainer" type="HFlowContainer" parent="Panel/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" parent="Panel/VBoxContainer/ScrollContainer/BtnContainer" instance=ExtResource("4_g68ua")]
+layout_mode = 2
+
+[node name="Button2" parent="Panel/VBoxContainer/ScrollContainer/BtnContainer" instance=ExtResource("4_g68ua")]
+layout_mode = 2
+text = "2"
+
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/ScrollContainer/BtnContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/ScrollContainer/BtnContainer/Button2" to="." method="_on_button_2_pressed"]
